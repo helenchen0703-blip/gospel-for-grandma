@@ -1,0 +1,122 @@
+<title>给奶奶的福音小包</title>
+<style>
+/* Layout: one narrow reading column, phone-first; each section led by a single large 楷书 character (说 · 祷 · 听 · 看 · 陪) */
+:root{
+  --bg:#f3f4ee; --surface:#ffffff; --fg:#23302a; --muted:#5f6b63;
+  --accent:#2f5d4a; --accent-soft:#e1ebe4; --line:#d6ddd4;
+  --kai:"Kaiti SC","STKaiti","KaiTi","BiauKai","Noto Serif SC","Songti SC",serif;
+  --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --sans:-apple-system,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161b18; --surface:#1e2521; --fg:#e4e9e3; --muted:#a3ada6;
+  --accent:#8fc3a8; --accent-soft:#25332c; --line:#2f3a34; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161b18; --surface:#1e2521; --fg:#e4e9e3; --muted:#a3ada6;
+  --accent:#8fc3a8; --accent-soft:#25332c; --line:#2f3a34; color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.75;padding-inline:20px;padding-block:40px 56px}
+.wrap{max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+header{display:flex;flex-direction:column;gap:14px}
+.eyebrow{font-size:13px;letter-spacing:.18em;color:var(--muted)}
+h1{font-family:var(--kai);font-weight:400;font-size:clamp(34px,9vw,46px);line-height:1.25;margin:0;text-wrap:balance}
+.lead{margin:0;color:var(--muted)}
+.verse{background:var(--accent-soft);border-radius:6px;padding:20px 22px;font-family:var(--kai);font-size:21px;line-height:1.8}
+.verse cite{display:block;margin-top:6px;font-family:var(--sans);font-style:normal;font-size:13px;color:var(--muted)}
+
+section{display:grid;grid-template-columns:64px 1fr;gap:4px 16px;border-top:1px solid var(--line);padding-top:26px}
+.glyph{font-family:var(--kai);font-size:52px;line-height:1;color:var(--accent);grid-row:span 3}
+section > *:not(.glyph){min-width:0}
+h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0;line-height:1.5}
+.sub{margin:0 0 6px;color:var(--muted);font-size:15px}
+.say{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.say li{font-family:var(--kai);font-size:22px;line-height:1.5;padding-left:14px;border-left:2px solid var(--accent)}
+.prayer{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin-top:8px}
+.prayer p{margin:0;font-family:var(--kai);font-size:21px;line-height:1.9}
+.copy{margin-top:12px;font:inherit;font-size:14px;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:999px;padding:4px 14px;cursor:pointer}
+.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.items{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:16px}
+.items b{font-family:var(--serif);font-weight:600}
+.items span{display:block;color:var(--muted);font-size:15px}
+.tips{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+footer{border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:14px;text-align:center;font-family:var(--kai);font-size:18px}
+@media (max-width:420px){section{grid-template-columns:44px 1fr;gap:4px 12px}.glyph{font-size:38px}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">和奶奶分享耶稣</div>
+    <h1>不用会讲，<br>也能把爱带给奶奶</h1>
+    <p class="lead">老人家不识字也没关系。一句话、一个短祷告、一首歌，就够了。下面几样挑一样开始，不用一次都做。</p>
+    <div class="verse">神爱世人，甚至将他的独生子赐给他们，叫一切信他的，不至灭亡，反得永生。<cite>约翰福音 3:16</cite></div>
+  </header>
+
+  <section>
+    <div class="glyph" aria-hidden="true">说</div>
+    <h2>三句简单的话</h2>
+    <p class="sub">用家里平常说话的口气就好，用方言更亲。</p>
+    <ul class="say">
+      <li>奶奶，耶稣爱你。</li>
+      <li>心里有啥难处，可以跟耶稣说，他听得见。</li>
+      <li>我给你祷告一下，好不好？</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="glyph" aria-hidden="true">祷</div>
+    <h2>一个短祷告</h2>
+    <p class="sub">你说一句，奶奶跟一句。她愿意跟着说，就很好了。</p>
+    <div class="prayer">
+      <p id="prayer-text">天父，谢谢你爱我。<br>我愿意信靠耶稣，<br>求你赦免我的罪，<br>保守我身体平安、心里平安。<br>奉耶稣的名祷告，阿们。</p>
+      <button class="copy" id="copy-prayer" type="button">复制祷告</button>
+    </div>
+  </section>
+
+  <section>
+    <div class="glyph" aria-hidden="true">听</div>
+    <h2>放给奶奶听的诗歌</h2>
+    <p class="sub">在音乐软件或视频号里搜歌名就能找到。</p>
+    <ul class="items">
+      <li><b>《耶稣爱我》</b><span>最老的儿童诗歌，旋律简单，听两遍就会哼。</span></li>
+      <li><b>《奇异恩典》</b><span>选中文版，慢一点的版本更适合老人。</span></li>
+      <li><b>《迦南诗选》</b><span>出自河南农村教会，曲调像民歌，很多村里的奶奶都会唱。</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="glyph" aria-hidden="true">看</div>
+    <h2>看图听故事</h2>
+    <ul class="items">
+      <li><b>电影《耶稣传》</b><span>照着路加福音拍的，有普通话版，也有不少方言配音版。看画面就能明白耶稣是谁，可以陪奶奶一起看。</span></li>
+      <li><b>圣经播放器</b><span>老人用的按键小播放器，网上搜“圣经播放器”就有。选大按键、带和合本圣经朗读和诗歌的，奶奶自己按一下就能听。</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="glyph" aria-hidden="true">陪</div>
+    <h2>找身边的人一起</h2>
+    <p class="sub">可以问问奶奶村里或镇上有没有聚会点，有信主的老姊妹常去看看她、带她唱歌，比什么资料都有用。</p>
+  </section>
+
+  <section>
+    <div class="glyph" aria-hidden="true">记</div>
+    <h2>几个小提醒</h2>
+    <ul class="tips">
+      <li>一次只做一样，下次回家再做下一样。</li>
+      <li>陪她听、拉着她的手，比讲道理有用。</li>
+      <li>奶奶问了再答，答不上来就说“我也在学”。</li>
+      <li>结果交给神。你愿意开口，本身就是爱。</li>
+    </ul>
+  </section>
+
+  <footer>愿平安临到奶奶，也临到你。</footer>
+</div>
+
+<script>
+document.getElementById('copy-prayer').addEventListener('click', function(){
+  var btn=this, text=document.getElementById('prayer-text').innerText;
+  function done(){btn.textContent='已复制';setTimeout(function(){btn.textContent='复制祷告'},1800)}
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('prayer-text'));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='已选中，长按复制'}
+  try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+});
+</script>
